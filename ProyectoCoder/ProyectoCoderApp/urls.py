@@ -7,6 +7,7 @@ from .views import *
 urlpatterns = [
 
     #URLs de ProyectoCoderAPP
+    path('', inicio),
     path('profesores/', profesores),
     path('estudiantes/', estudiantes),
     path('cursos/', cursos),
