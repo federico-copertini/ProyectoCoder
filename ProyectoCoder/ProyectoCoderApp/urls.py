@@ -9,6 +9,6 @@ urlpatterns = [
     #URLs de ProyectoCoderAPP
     path('profesores/', profesores),
     path('estudiantes/', estudiantes),
-    path('cursos/', cursos)
-    path('entregables', entregables)
+    path('cursos/', cursos),
+    path('entregables', entregables),
 ]
