@@ -42,6 +42,6 @@ def cursos(request):
 
     return HttpResponse("vista de cursos")
 
-def profesores(request):
+def entregables(request):
 
     return HttpResponse("vista de entregables")
