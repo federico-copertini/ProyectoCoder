@@ -40,7 +40,9 @@ def estudiantes(request):
 
 def cursos(request):
 
-    return HttpResponse("vista de cursos")
+    cursos = Curso.objects.all()
+
+    return render(request,"ProyectoCoderApp/Cursos.html",{"cursos":cursos})
 
 def entregables(request):
 
