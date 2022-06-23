@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 #from httplib2 import Http
 
-from ProyectoCoderApp.models import Curso
+from ProyectoCoderApp.models import *
 
 # Create your views here.
 
@@ -31,12 +31,15 @@ def crear_curso(request):
     return HttpResponse(f"Cursos: {str(lista_cursos)}")
 
 def profesores(request):
-
-    return HttpResponse("vista de profes")
-
+    
+    profesores = Profesor.objects.all()
+    
+    return render(request,"ProyectoCoderApp/profesores.html",{"profesores":profesores})
 def estudiantes(request):
 
-    return HttpResponse("vista de estudiantes")
+    estudiantes = Estudiante.objects.all()
+
+    return render(request,"ProyectoCoderApp/estudiantes.html",{"estudiantes":estudiantes})
 
 def cursos(request):
 
