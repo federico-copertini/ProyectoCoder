@@ -44,6 +44,10 @@ def cursos(request):
 
     return render(request,"ProyectoCoderApp/Cursos.html",{"cursos":cursos})
 
+def base(request):
+
+    return render(request,"ProyectoCoderApp/base.html",{})
+
 def entregables(request):
 
     return HttpResponse("vista de entregables")
