@@ -5,6 +5,7 @@ from django.http import HttpResponse
 #from httplib2 import Http
 
 from ProyectoCoderApp.models import *
+from .forms import NuevoCurso
 
 # Create your views here.
 
@@ -18,11 +19,8 @@ def inicio(request):
 
 def crear_curso(request):
 
-    #get
-    if request.method == "GET":
-        return render(request,"ProyectoCoderApp/formulario_curso.html",{})
     #post
-    elif request.method == "POST":
+    if request.method == "POST":
         info_formulario = request.POST
         
         curso = Curso(nombre=info_formulario["nombre"],comision=int(info_formulario["comision"]))
@@ -30,9 +28,11 @@ def crear_curso(request):
         curso.save()
         
         return redirect("cursos")
-
+    
+    #GET
     else:
-       return render(request,"ProyectoCoderApp/formulario_curso.html",{})
+        formulario_vacio = NuevoCurso()
+        return render(request,"ProyectoCoderApp/formulario_curso.html",{"form":formulario_vacio})
    
 
 def profesores(request):

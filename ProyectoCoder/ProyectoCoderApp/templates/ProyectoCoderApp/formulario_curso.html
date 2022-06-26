@@ -8,10 +8,11 @@
     <h2> Crear un curso nuevo: </h2>
     <form action="" method="post">
         {% csrf_token %}
-        <p>curso: <input type="text" name="nombre" id=""> </p>
 
-        <p>comision: <input type="number" name="comision" id="" min="0"> </p>
+        <!--<p>curso: <input type="text" name="nombre" id=""> </p>
+        <p>comision: <input type="number" name="comision" id="" min="0"> </p>-->
 
+        {{ form.as_p }}
         <input type="submit" value="Crear curso">
     </form>
 
