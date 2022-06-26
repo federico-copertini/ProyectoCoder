@@ -21,19 +21,41 @@ def crear_curso(request):
 
     #post
     if request.method == "POST":
-        info_formulario = request.POST
         
-        curso = Curso(nombre=info_formulario["nombre"],comision=int(info_formulario["comision"]))
+        formulario = NuevoCurso(request.POST)
         
-        curso.save()
+        if formulario.is_valid():
+            
+            info_curso = formulario.cleaned_data
+            
+            curso = Curso(nombre=info_curso["nombre"], comision=int(info_curso["comision"]))
         
-        return redirect("cursos")
+            curso.save()
+        
+            return redirect("cursos")
+        
+        else:
+            return render(request,"ProyectoCoderApp/formulario_curso.html",{"form":formulario})
     
     #GET
     else:
         formulario_vacio = NuevoCurso()
         return render(request,"ProyectoCoderApp/formulario_curso.html",{"form":formulario_vacio})
    
+def buscar_comision(request):
+    
+    if request.method == "POST":
+        
+        comision= request.POST["comision"]
+        
+        comisiones = Curso.objects.filter(comision__icontains=comision, nombre__icontains=comision)
+        
+        return render(request,"ProyectoCoderApp/buscar_comision.html",{"comisiones":comisiones})
+    
+    else: #get y otros
+        comisiones = []
+    
+        return render(request,"ProyectoCoderApp/buscar_comision.html",{"comisiones":comisiones})
 
 def profesores(request):
     

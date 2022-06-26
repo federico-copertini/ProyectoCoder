@@ -1,0 +1,25 @@
+
+{% extends 'ProyectoCoderApp/base.html' %}
+
+{% load static %}
+{% block tituloPagina %}App Coder - Buscar Curso{% endblock %}
+
+{% block contenidoPagina %}
+    <p> Buscar comision: <form action="" method="post"></form>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <!--<p>curso: <input type="text" name="nombre" id=""> </p>-->
+            <input type="text" name="comision" id="" min="0">
+
+            <input type="submit" value="Buscar">
+        </form>
+    </p>
+
+    <p>resultados:</p>
+    <ul>
+        {% for resultado in comisiones %}
+        <li>{{ resultado.nombre }} [{{ resultado.comision }}]</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
